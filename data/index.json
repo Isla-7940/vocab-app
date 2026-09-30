@@ -1,0 +1,19 @@
+{
+  "libraries": [
+    {
+      "id": "cet4",
+      "name": "大学英语四级",
+      "count": 3692
+    },
+    {
+      "id": "cet6",
+      "name": "大学英语六级",
+      "count": 5211
+    },
+    {
+      "id": "ielts",
+      "name": "雅思",
+      "count": 4463
+    }
+  ]
+}

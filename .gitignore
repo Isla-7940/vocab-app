@@ -1,0 +1,10 @@
+# 本地密钥（接口代理调试用），不得提交
+.dev.vars
+.env
+
+# 词库源文件体积较大，不提交
+*.csv
+
+__pycache__/
+node_modules/
+.wrangler/

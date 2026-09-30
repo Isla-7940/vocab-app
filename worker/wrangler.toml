@@ -1,0 +1,27 @@
+# AI 接口代理（Cloudflare Worker）
+# 密钥不写在此文件中：
+#   线上：npx wrangler secret put API_KEY
+#   本地：复制 .dev.vars.example 为 .dev.vars 后填写
+name = "vocab-api"
+main = "index.js"
+compatibility_date = "2025-06-01"
+
+# 需要 t-i.cc 已托管在同一个 Cloudflare 账号下
+routes = [
+  { pattern = "vocab-api.t-i.cc", custom_domain = true }
+]
+
+[vars]
+API_BASE = "https://api.deepseek.com"
+MODEL = "deepseek-flash"
+# 允许调用的前端地址，逗号分隔；GitHub Pages 地址只写到域名（小写），不含仓库路径
+ALLOWED_ORIGINS = "https://isla-7940.github.io,http://localhost:8765"
+
+# 每个 IP 每分钟最多 10 次请求
+[[ratelimits]]
+name = "RATE_LIMITER"
+namespace_id = "1001"
+
+  [ratelimits.simple]
+  limit = 10
+  period = 60
