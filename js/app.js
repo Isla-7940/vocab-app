@@ -266,6 +266,13 @@ function answer(choice) {
     </section>`;
   feedback.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   if (mode === 'zh2en' && state.settings.autoSpeak) speak(word.w);
+  // 答对后停留 1 秒自动进入下一题；期间已手动翻页或退出时不再跳转
+  if (correct) {
+    const index = q.index;
+    setTimeout(() => {
+      if (state.quiz === q && q.index === index) nextQuestion();
+    }, 1000);
+  }
 }
 
 // 答错时提供 AI 例句：已生成过的直接显示
